@@ -25,4 +25,14 @@ readonly class Request
             $_SERVER
         );
     }
+
+    public function getPathInformation(): string
+    {
+        return strtok($this->server['REQUEST_URI'], '?');
+    }
+
+    public function getMethod(): string
+    {
+        return $this->server['REQUEST_METHOD'];
+    }
 }
