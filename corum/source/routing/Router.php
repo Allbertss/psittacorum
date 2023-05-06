@@ -7,6 +7,7 @@ use allbertss\psittacorum\http\exception\HttpRequestMethodException;
 use allbertss\psittacorum\http\Request;
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
+use Psr\Container\ContainerInterface;
 use function FastRoute\simpleDispatcher;
 
 class Router implements RouterInterface
@@ -19,14 +20,16 @@ class Router implements RouterInterface
      * @throws HttpException
      * @throws HttpRequestMethodException
      */
-    public function dispatch(Request $request): array
+    public function dispatch(Request $request, ContainerInterface $container): array
     {
         [$handler, $variables] = $this->extractRouteInformation($request);
 
         if (is_array($handler)) {
-            [$controller, $method] = $handler;
+            [$controllerId, $method] = $handler;
 
-            $handler = [new $controller, $method];
+            $controller = $container->get($controllerId);
+
+            $handler = [$controller, $method];
         }
 
         return [$handler, $variables];

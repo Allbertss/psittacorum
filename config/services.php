@@ -2,6 +2,10 @@
 
 $container = new \League\Container\Container();
 
+$container->delegate(
+    new \League\Container\ReflectionContainer(true)
+);
+
 $routes = include BASE_PATH . '/routes/web.php';
 
 $container->add(
@@ -18,6 +22,8 @@ $container->extend(
 
 $container->add(
     \allbertss\psittacorum\http\Kernel::class
-)->addArgument(\allbertss\psittacorum\routing\RouterInterface::class);
+)
+    ->addArgument(\allbertss\psittacorum\routing\RouterInterface::class)
+    ->addArgument($container);
 
 return $container;
