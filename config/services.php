@@ -1,7 +1,7 @@
 <?php
 
 $dotenv = new \Symfony\Component\Dotenv\Dotenv();
-$dotenv->load(dirname(__DIR__) . '/.env');
+$dotenv->load(BASE_PATH . '/.env');
 
 $container = new \League\Container\Container();
 
@@ -10,6 +10,7 @@ $container->delegate(
 );
 
 $routes = include BASE_PATH . '/routes/web.php';
+$templatePath = BASE_PATH . '/template';
 $appEnv = $_ENV['APP_ENV'];
 
 $container->add(
@@ -34,5 +35,16 @@ $container->add(
 )
     ->addArgument(\allbertss\psittacorum\routing\RouterInterface::class)
     ->addArgument($container);
+
+$container->addShared('file-system-loader', \Twig\Loader\FilesystemLoader::class)
+    ->addArgument(new \League\Container\Argument\Literal\StringArgument($templatePath));
+
+$container->addShared('twig', \Twig\Environment::class)
+    ->addArgument('file-system-loader');
+
+$container->add(\allbertss\psittacorum\controller\AbstractController::class);
+
+$container->inflector(\allbertss\psittacorum\controller\AbstractController::class)
+    ->invokeMethod('setContainer', [$container]);
 
 return $container;

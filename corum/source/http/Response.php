@@ -19,4 +19,11 @@ class Response
     {
         echo $this->content;
     }
+
+    public function setContent(?string $content): Response
+    {
+        $this->content = $content;
+
+        return $this;
+    }
 }
