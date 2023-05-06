@@ -1,13 +1,15 @@
 <?php
 
-namespace allbertss\psittacorum\Http;
+namespace allbertss\psittacorum\routing;
 
+use allbertss\psittacorum\Http\Request;
+use allbertss\psittacorum\routing\RouterInterface;
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
 
-class Kernel
+class Router implements RouterInterface
 {
-    public function handle(Request $request): Response
+    public function dispatch(Request $request): array
     {
         $dispatcher = simpleDispatcher(function(RouteCollector $routeCollector) {
             $routes = include BASE_PATH . '/routes/web.php';
@@ -24,6 +26,6 @@ class Kernel
 
         [$statusCode, [$controller, $method], $variables] = $routeInfo;
 
-        return (new $controller())->$method($variables);
+        return [[new $controller, $method], $variables];
     }
 }
