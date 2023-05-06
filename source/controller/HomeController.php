@@ -24,8 +24,18 @@ class HomeController extends AbstractController
         );
     }
 
-    public function show(int $id): Response
+    public function show(string $name): Response
     {
-        return new Response("Id: $id");
+        return $this->render(
+            'home.html.twig',
+            [
+                'name' => $name
+            ]
+        );
+    }
+
+    public function create(): Response
+    {
+        return $this->render('form.html.twig');
     }
 }
