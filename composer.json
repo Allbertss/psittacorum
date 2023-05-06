@@ -1,0 +1,20 @@
+{
+  "name": "vendor_name/psittacorum",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "allbertss",
+      "email": "albertasgrigoryan@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\:": "source/",
+      "allbertss\\psittacorum\\": "corum/"
+    }
+  },
+  "require": {
+  }
+}
