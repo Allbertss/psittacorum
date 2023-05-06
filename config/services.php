@@ -1,5 +1,8 @@
 <?php
 
+$dotenv = new \Symfony\Component\Dotenv\Dotenv();
+$dotenv->load(dirname(__DIR__) . '/.env');
+
 $container = new \League\Container\Container();
 
 $container->delegate(
@@ -7,6 +10,12 @@ $container->delegate(
 );
 
 $routes = include BASE_PATH . '/routes/web.php';
+$appEnv = $_ENV['APP_ENV'];
+
+$container->add(
+    'APP_ENV',
+    new \League\Container\Argument\Literal\StringArgument($appEnv)
+);
 
 $container->add(
     \allbertss\psittacorum\routing\RouterInterface::class,
