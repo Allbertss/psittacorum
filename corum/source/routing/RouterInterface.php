@@ -2,7 +2,7 @@
 
 namespace allbertss\psittacorum\routing;
 
-use allbertss\psittacorum\Http\Request;
+use allbertss\psittacorum\http\Request;
 
 interface RouterInterface
 {

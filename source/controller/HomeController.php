@@ -2,7 +2,7 @@
 
 namespace App\controller;
 
-use allbertss\psittacorum\Http\Response;
+use allbertss\psittacorum\http\Response;
 
 class HomeController
 {

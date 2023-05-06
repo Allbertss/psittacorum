@@ -1,6 +1,6 @@
 <?php
 
-namespace allbertss\psittacorum\Http\exception;
+namespace allbertss\psittacorum\http\exception;
 
 class HttpException extends \Exception
 {

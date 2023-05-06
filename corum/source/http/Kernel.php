@@ -1,14 +1,14 @@
 <?php
 
-namespace allbertss\psittacorum\Http;
+namespace allbertss\psittacorum\http;
 
-use allbertss\psittacorum\Http\exception\HttpException;
-use allbertss\psittacorum\routing\Router;
+use allbertss\psittacorum\http\exception\HttpException;
+use allbertss\psittacorum\routing\RouterInterface;
 
 class Kernel
 {
     public function __construct(
-        private Router $router
+        private RouterInterface $router
     )
     {
     }

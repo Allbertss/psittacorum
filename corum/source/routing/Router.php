@@ -2,9 +2,9 @@
 
 namespace allbertss\psittacorum\routing;
 
-use allbertss\psittacorum\Http\exception\HttpException;
-use allbertss\psittacorum\Http\exception\HttpRequestMethodException;
-use allbertss\psittacorum\Http\Request;
+use allbertss\psittacorum\http\exception\HttpException;
+use allbertss\psittacorum\http\exception\HttpRequestMethodException;
+use allbertss\psittacorum\http\Request;
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;

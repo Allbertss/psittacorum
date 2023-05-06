@@ -1,6 +1,6 @@
 <?php
 
-namespace allbertss\psittacorum\Http;
+namespace allbertss\psittacorum\http;
 
 class Response
 {
