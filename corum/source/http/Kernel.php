@@ -3,10 +3,7 @@
 namespace allbertss\psittacorum\Http;
 
 use allbertss\psittacorum\Http\exception\HttpException;
-use allbertss\psittacorum\Http\exception\HttpRequestMethodException;
 use allbertss\psittacorum\routing\Router;
-use FastRoute\RouteCollector;
-use function FastRoute\simpleDispatcher;
 
 class Kernel
 {
@@ -22,10 +19,8 @@ class Kernel
             [$routeHandler, $variables] = $this->router->dispatch($request);
 
             $response = call_user_func_array($routeHandler, $variables);
-        } catch (HttpRequestMethodException $exception) {
-            $response = new Response($exception->getMessage(), 405);
         } catch (HttpException $exception) {
-            $response = new Response($exception->getMessage(), 404);
+            $response = new Response($exception->getMessage(), $exception->getStatusCode());
         } catch (\Exception $exception) {
             $response = new Response($exception->getMessage(), 500);
         }

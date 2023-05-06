@@ -4,20 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e39b9b2869a9ab76b487365ec73a8f42",
+    "content-hash": "c3dd951a85bad49f5ea4df56d23dddb3",
     "packages": [
         {
+            "name": "allbertss/psittacorum",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "corum",
+                "reference": "d6d0b92bb08a567cbeeeff64f8b10365ad4125e6"
+            },
+            "require": {
+                "nikic/fast-route": "^1.3"
+            },
+            "require-dev": {
+                "symfony/var-dumper": "^6.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "allbertss\\psittacorum\\": "source/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "allbertss",
+                    "email": "albertasgrigoryan@gmail.com"
+                }
+            ],
+            "description": "description",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "nikic/fast-route",
-            "version": "v1.3.0",
+            "version": "v1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/FastRoute.git",
-                "reference": "181d480e08d9476e61381e04a71b34dc0432e812"
+                "reference": "4012884e0b916e1bd895a5061d4abc3c99e283a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/181d480e08d9476e61381e04a71b34dc0432e812",
-                "reference": "181d480e08d9476e61381e04a71b34dc0432e812",
+                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/4012884e0b916e1bd895a5061d4abc3c99e283a4",
+                "reference": "4012884e0b916e1bd895a5061d4abc3c99e283a4",
                 "shasum": ""
             },
             "require": {
@@ -52,24 +86,24 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/FastRoute/issues",
-                "source": "https://github.com/nikic/FastRoute/tree/master"
+                "source": "https://github.com/nikic/FastRoute/tree/v1.x"
             },
-            "time": "2018-02-13T20:26:39+00:00"
+            "time": "2019-12-20T12:15:33+00:00"
         }
     ],
     "packages-dev": [
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.27.0",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534"
+                "reference": "f9c7affe77a00ae32ca127ca6833d034e6d33f25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
-                "reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/f9c7affe77a00ae32ca127ca6833d034e6d33f25",
+                "reference": "f9c7affe77a00ae32ca127ca6833d034e6d33f25",
                 "shasum": ""
             },
             "require": {
@@ -81,10 +115,11 @@
             "suggest": {
                 "ext-mbstring": "For best performance"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.27-dev"
+                    "dev-main": "1.28-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -123,7 +158,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.27.0"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/main"
             },
             "funding": [
                 {
@@ -139,20 +174,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-03T14:55:06+00:00"
+            "time": "2023-01-30T17:25:47+00:00"
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v6.2.10",
+            "version": "6.3.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "41a750a23412ca76fdbbf5096943b4134272c1ab"
+                "reference": "7dbe8a625973f50073fe72410db1c5c66e21198b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/41a750a23412ca76fdbbf5096943b4134272c1ab",
-                "reference": "41a750a23412ca76fdbbf5096943b4134272c1ab",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/7dbe8a625973f50073fe72410db1c5c66e21198b",
+                "reference": "7dbe8a625973f50073fe72410db1c5c66e21198b",
                 "shasum": ""
             },
             "require": {
@@ -169,11 +204,6 @@
                 "symfony/process": "^5.4|^6.0",
                 "symfony/uid": "^5.4|^6.0",
                 "twig/twig": "^2.13|^3.0.4"
-            },
-            "suggest": {
-                "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
-                "ext-intl": "To show region name in time zone dump",
-                "symfony/console": "To use the ServerDumpCommand and/or the bin/var-dump-server script"
             },
             "bin": [
                 "Resources/bin/var-dump-server"
@@ -211,7 +241,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v6.2.10"
+                "source": "https://github.com/symfony/var-dumper/tree/6.3"
             },
             "funding": [
                 {
@@ -227,12 +257,14 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-18T13:46:08+00:00"
+            "time": "2023-04-21T14:41:17+00:00"
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "allbertss/psittacorum": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

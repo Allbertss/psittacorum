@@ -1,0 +1,23 @@
+{
+  "name": "allbertss/psittacorum",
+  "description": "description",
+  "minimum-stability": "dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "allbertss",
+      "email": "albertasgrigoryan@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "allbertss\\psittacorum\\": "source/"
+    }
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^6.2"
+  },
+  "require": {
+    "nikic/fast-route": "^1.3"
+  }
+}
