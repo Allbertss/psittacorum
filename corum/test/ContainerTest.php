@@ -45,4 +45,20 @@ class ContainerTest extends TestCase
         $this->assertTrue($container->has('dependant-class'));
         $this->assertFalse($container->has('non-existent-class'));
     }
+
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     * @throws ContainerException
+     */
+    public function test_services_can_be_recursively_autowired(): void
+    {
+        $container = new Container();
+
+        $dependantService = $container->get(DependantClass::class);
+        $dependencyService = $dependantService->getDependency();
+
+        $this->assertInstanceOf(DependencyClass::class, $dependencyService);
+        $this->assertInstanceOf(SubDependencyClass::class, $dependencyService->getSubDependencyClass());
+    }
 }
