@@ -1,0 +1,13 @@
+services:
+    web:
+        image: garyclarke/php-framework-web
+        volumes:
+            - ./public:/var/www/html/public
+        ports:
+            - "80:80"
+    app:
+        image: garyclarke/php-framework-app
+        volumes:
+            - .:/var/www/html
+        extra_hosts:
+            - host.docker.internal:host-gateway
