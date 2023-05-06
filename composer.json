@@ -11,10 +11,11 @@
   ],
   "autoload": {
     "psr-4": {
-      "App\\:": "source/",
+      "App\\": "source/",
       "allbertss\\psittacorum\\": "corum/"
     }
   },
   "require": {
+    "symfony/var-dumper": "^6.2"
   }
 }
