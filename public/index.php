@@ -3,11 +3,16 @@
 declare(strict_types = 1);
 
 use allbertss\psittacorum\Http\Request;
+use allbertss\psittacorum\Http\Response;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 $request = Request::createFromGlobals();
 
-dd($request);
+$response = new Response(
+    '<b>Hello</b> world',
+    200,
+    []
+);
 
-echo 'Hello world';
+$response->send();
