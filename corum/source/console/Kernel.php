@@ -9,7 +9,8 @@ final class Kernel
 {
     // TODO: wrap ContainerInterface to my own interface to make sure it always has ->get method.
     public function __construct(
-        private ContainerInterface $container
+        private ContainerInterface $container,
+        private Application $application
     )
     {
     }
@@ -31,9 +32,9 @@ final class Kernel
     {
         $this->registerCommands();
 
-        dd($this->container);
+        $status = $this->application->run();
 
-        return 0;
+        return $status;
     }
 
     private function registerCommands(): void

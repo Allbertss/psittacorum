@@ -64,6 +64,12 @@ $container->addShared(\Doctrine\DBAL\Connection::class, function () use ($contai
 });
 
 $container->add(\allbertss\psittacorum\console\Kernel::class)
+    ->addArguments([
+        $container,
+        \allbertss\psittacorum\console\Application::class
+    ]);
+
+$container->add(\allbertss\psittacorum\console\Application::class)
     ->addArgument($container);
 
 return $container;
