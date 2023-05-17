@@ -38,7 +38,7 @@ class Application
     {
         return array_reduce($arguments, function ($accumulator, $argument) {
             if (str_starts_with($argument, '--')) {
-                $option = explode('-', substr($argument, 2));
+                $option = explode('=', substr($argument, 2));
 
                 $accumulator[$option[0]] = $option[1] ?? true;
             }

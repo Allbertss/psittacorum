@@ -10,6 +10,8 @@ class MigrateDatabase implements CommandInterface
 
     public function execute(array $parameters = []): int
     {
+        dd($parameters);
+
         return 0;
     }
 }
