@@ -4,6 +4,7 @@ namespace allbertss\psittacorum\http;
 
 use allbertss\psittacorum\http\exception\HttpException;
 use allbertss\psittacorum\routing\RouterInterface;
+use Doctrine\DBAL\Connection;
 use Psr\Container\ContainerInterface;
 
 class Kernel
