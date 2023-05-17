@@ -2,10 +2,10 @@
 
 namespace allbertss\psittacorum\console;
 
-class Kernel
+final class Kernel
 {
     /*
-     * Console's statuses
+     * Statuses
      * 0 - The application completed successfully.
      * 1 - The application encountered an error or invalid input.
      * 2 - The application was unable to find the specified file.
@@ -19,6 +19,8 @@ class Kernel
      */
     public function handle(): int
     {
+
+
         return 0;
     }
 }
