@@ -72,4 +72,10 @@ $container->add(\allbertss\psittacorum\console\Kernel::class)
 $container->add(\allbertss\psittacorum\console\Application::class)
     ->addArgument($container);
 
+$container->add('database:migrations:migrate', \allbertss\psittacorum\console\command\migrate\MigrateDatabase::class)
+    ->addArguments([
+        \Doctrine\DBAL\Connection::class,
+        new \League\Container\Argument\Literal\StringArgument(BASE_PATH . '/migrations')
+    ]);
+
 return $container;
