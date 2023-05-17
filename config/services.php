@@ -16,6 +16,11 @@ $appEnv = $_ENV['APP_ENV'];
 $databaseUrl = 'sqlite:///' . BASE_PATH . '/var/db.sqlite';
 
 $container->add(
+    'base-commands-namespace',
+    new \League\Container\Argument\Literal\StringArgument('allbertss\\psittacorum\\console\\command\\migrate\\')
+);
+
+$container->add(
     'APP_ENV',
     new \League\Container\Argument\Literal\StringArgument($appEnv)
 );
@@ -57,5 +62,8 @@ $container->add(\allbertss\psittacorum\databaseAbstractionLayer\ConnectionFactor
 $container->addShared(\Doctrine\DBAL\Connection::class, function () use ($container): \Doctrine\DBAL\Connection {
     return $container->get(\allbertss\psittacorum\databaseAbstractionLayer\ConnectionFactory::class)->createConnection();
 });
+
+$container->add(\allbertss\psittacorum\console\Kernel::class)
+    ->addArgument($container);
 
 return $container;
