@@ -5,13 +5,14 @@ namespace App\controller;
 use allbertss\psittacorum\controller\AbstractController;
 use allbertss\psittacorum\http\Response;
 use App\entity\Home;
-use App\repository\HomeMapper;
-use App\Widget;
+use App\mapper\HomeMapper;
+use App\repository\HomeRepository;
 
 class HomeController extends AbstractController
 {
     public function __construct(
-        private HomeMapper $homeMapper
+        private HomeMapper $homeMapper,
+        private HomeRepository $homeRepository
     )
     {
     }
@@ -26,12 +27,14 @@ class HomeController extends AbstractController
         );
     }
 
-    public function show(string $name): Response
+    public function show(int $id): Response
     {
+        $home = $this->homeRepository->findById($id);
+
         return $this->render(
             'home.html.twig',
             [
-                'name' => $name
+                'home' => $home
             ]
         );
     }

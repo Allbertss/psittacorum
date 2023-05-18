@@ -1,5 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-    <p>Name: <strong>{{ name }}</strong></p>
+    <div class="container mt-3">
+        <table class="table table-striped table-dark">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Body</th>
+                <th scope="col">Created at</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ home.id }}</td>
+                <td>{{ home.title }}</td>
+                <td>{{ home.body }}</td>
+                <td>{{ home.createdAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

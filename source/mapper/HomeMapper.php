@@ -1,6 +1,6 @@
 <?php
 
-namespace App\repository;
+namespace App\mapper;
 
 use App\entity\Home;
 use Doctrine\DBAL\Connection;
