@@ -5,6 +5,7 @@ namespace App\controller;
 use allbertss\psittacorum\controller\AbstractController;
 use allbertss\psittacorum\http\RedirectResponse;
 use allbertss\psittacorum\http\Response;
+use allbertss\psittacorum\session\SessionInterface;
 use App\entity\Home;
 use App\mapper\HomeMapper;
 use App\repository\HomeRepository;
@@ -13,7 +14,8 @@ class HomeController extends AbstractController
 {
     public function __construct(
         private HomeMapper     $homeMapper,
-        private HomeRepository $homeRepository
+        private HomeRepository $homeRepository,
+        private SessionInterface $session
     )
     {
     }
@@ -58,7 +60,9 @@ class HomeController extends AbstractController
 
         $home = Home::create($title, $body);
 
-        $this->homeMapper->save($home);
+        $id = $this->homeMapper->save($home);
+
+        $this->session->setFlash('success', "Home successfully created with an id $id and a title $title");
 
         return new RedirectResponse('/homes');
     }

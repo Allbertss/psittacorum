@@ -1,5 +1,8 @@
 <?php
 
+// TODO: extract into corum
+// TODO: refactor into multiple files
+
 $dotenv = new \Symfony\Component\Dotenv\Dotenv();
 $dotenv->load(BASE_PATH . '/.env');
 
@@ -43,11 +46,20 @@ $container->add(
     ->addArgument(\allbertss\psittacorum\routing\RouterInterface::class)
     ->addArgument($container);
 
-$container->addShared('file-system-loader', \Twig\Loader\FilesystemLoader::class)
-    ->addArgument(new \League\Container\Argument\Literal\StringArgument($templatePath));
+$container->addShared(
+    \allbertss\psittacorum\session\SessionInterface::class,
+    \allbertss\psittacorum\session\Session::class
+);
 
-$container->addShared('twig', \Twig\Environment::class)
-    ->addArgument('file-system-loader');
+$container->add('template-renderer-factory', \allbertss\psittacorum\template\TwigFactory::class)
+    ->addArguments([
+        \allbertss\psittacorum\session\SessionInterface::class,
+        new \League\Container\Argument\Literal\StringArgument($templatePath)
+    ]);
+
+$container->addShared('twig', function () use ($container) {
+    return $container->get('template-renderer-factory')->create();
+});
 
 $container->add(\allbertss\psittacorum\controller\AbstractController::class);
 
