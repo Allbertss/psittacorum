@@ -40,6 +40,16 @@
         </div>
     {% endif %}
 
+    {% if session().hasFlash('warning') %}
+        <div class="alert alert-warning" role="alert">
+            <ul style="list-style: none">
+                {% for message in session().getFlash('warning') %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
     {% block main %}
 
     {% endblock %}
