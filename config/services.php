@@ -41,10 +41,15 @@ $container->extend(
 );
 
 $container->add(
-    \allbertss\psittacorum\http\Kernel::class
-)
-    ->addArgument(\allbertss\psittacorum\routing\RouterInterface::class)
-    ->addArgument($container);
+    \allbertss\psittacorum\http\middleware\RequestHandlerInterface::class,
+    \allbertss\psittacorum\http\middleware\RequestHandler::class
+);
+
+$container->add(\allbertss\psittacorum\http\Kernel::class)->addArguments([
+    \allbertss\psittacorum\routing\RouterInterface::class,
+    $container,
+    \allbertss\psittacorum\http\middleware\RequestHandlerInterface::class
+]);
 
 $container->addShared(
     \allbertss\psittacorum\session\SessionInterface::class,

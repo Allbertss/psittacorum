@@ -3,6 +3,7 @@
 namespace allbertss\psittacorum\http;
 
 use allbertss\psittacorum\http\exception\HttpException;
+use allbertss\psittacorum\http\middleware\RequestHandlerInterface;
 use allbertss\psittacorum\routing\RouterInterface;
 use Doctrine\DBAL\Connection;
 use Psr\Container\ContainerInterface;
@@ -13,7 +14,8 @@ class Kernel
 
     public function __construct(
         private RouterInterface $router,
-        private ContainerInterface $container
+        private ContainerInterface $container,
+        private RequestHandlerInterface $requestHandler
     )
     {
         $this->appEnv = $this->container->get('APP_ENV');
@@ -22,9 +24,11 @@ class Kernel
     public function handle(Request $request): Response
     {
         try {
-            [$routeHandler, $variables] = $this->router->dispatch($request, $this->container);
+            $response = $this->requestHandler->handle($request);
 
-            $response = call_user_func_array($routeHandler, $variables);
+//            [$routeHandler, $variables] = $this->router->dispatch($request, $this->container);
+//
+//            $response = call_user_func_array($routeHandler, $variables);
         } catch (\Exception $exception) {
             $response = $this->createExceptionResponse($exception);
         }
