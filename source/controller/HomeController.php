@@ -5,12 +5,13 @@ namespace App\controller;
 use allbertss\psittacorum\controller\AbstractController;
 use allbertss\psittacorum\http\Response;
 use App\entity\Home;
+use App\repository\HomeMapper;
 use App\Widget;
 
 class HomeController extends AbstractController
 {
     public function __construct(
-        private Widget $widget
+        private HomeMapper $homeMapper
     )
     {
     }
@@ -45,8 +46,10 @@ class HomeController extends AbstractController
         $title = $this->request->postParameters['title'];
         $body = $this->request->postParameters['body'];
 
-        $post = Home::create($title, $body);
+        $home = Home::create($title, $body);
 
-        dd($post);
+        $this->homeMapper->save($home);
+
+        dd($home);
     }
 }

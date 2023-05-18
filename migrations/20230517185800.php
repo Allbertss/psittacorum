@@ -17,7 +17,7 @@ return new class
             'length' => 255
         ]);
         $table->addColumn('body', Types::TEXT);
-        $table->addColumn('created_add', Types::DATE_IMMUTABLE, [
+        $table->addColumn('created_at', Types::DATE_IMMUTABLE, [
             'default' => 'CURRENT_TIMESTAMP'
         ]);
 
