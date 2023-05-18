@@ -3,6 +3,7 @@
 namespace App\controller;
 
 use allbertss\psittacorum\controller\AbstractController;
+use allbertss\psittacorum\http\RedirectResponse;
 use allbertss\psittacorum\http\Response;
 use App\entity\Home;
 use App\mapper\HomeMapper;
@@ -50,7 +51,7 @@ class HomeController extends AbstractController
         return $this->render('form.html.twig');
     }
 
-    public function store(): void
+    public function store(): Response
     {
         $title = $this->request->postParameters['title'];
         $body = $this->request->postParameters['body'];
@@ -59,6 +60,6 @@ class HomeController extends AbstractController
 
         $this->homeMapper->save($home);
 
-        dd($home);
+        return new RedirectResponse('/homes');
     }
 }
