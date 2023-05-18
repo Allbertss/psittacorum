@@ -2,11 +2,22 @@
 
 namespace App\form\user;
 
+use App\entity\User;
+
 class RegistrationForm
 {
     private string $username;
     private string $password;
     private array $errors = [];
+
+    public function save(): User
+    {
+        $user = User::create($this->username, $this->password);
+
+        $this->userMapper->save($user);
+
+        return $user;
+    }
 
     public function hasValidationErrors(): bool
     {
