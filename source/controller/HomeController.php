@@ -14,8 +14,7 @@ class HomeController extends AbstractController
 {
     public function __construct(
         private HomeMapper     $homeMapper,
-        private HomeRepository $homeRepository,
-        private SessionInterface $session
+        private HomeRepository $homeRepository
     )
     {
     }
@@ -62,7 +61,10 @@ class HomeController extends AbstractController
 
         $id = $this->homeMapper->save($home);
 
-        $this->session->setFlash('success', "Home successfully created with an id $id and a title $title");
+        $this->request->getSession()->setFlash(
+            'success',
+            "Home successfully created with an id $id and a title $title"
+        );
 
         return new RedirectResponse('/homes');
     }

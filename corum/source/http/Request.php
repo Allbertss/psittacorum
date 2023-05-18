@@ -3,8 +3,12 @@
 namespace allbertss\psittacorum\http;
 
 // TODO: use psr-15 Request interface
+use allbertss\psittacorum\session\SessionInterface;
+
 readonly class Request
 {
+    private SessionInterface $session;
+
     public function __construct(
         public readonly array $getParameters,
         public readonly array $postParameters,
@@ -35,5 +39,10 @@ readonly class Request
     public function getMethod(): string
     {
         return $this->server['REQUEST_METHOD'];
+    }
+
+    public function setSession(SessionInterface $session): void
+    {
+        $this->session = $session;
     }
 }

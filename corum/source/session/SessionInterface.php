@@ -4,6 +4,7 @@ namespace allbertss\psittacorum\session;
 
 interface SessionInterface
 {
+    public function start(): void;
     public function set(string $key, $value): void;
 
     public function get(string $key, $default = null);
