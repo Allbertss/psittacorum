@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-    <form>
-        <div>
-            <label for="title">Title</label>
-            <input type="text" id="title" aria-describedby="titleHelp">
-        </div>
-        <div class="mb-3">
-            <label for="body">Body</label>
-            <textarea name="body" id="" cols="30" rows="10"></textarea>
-        </div>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="container">
+        <form class="form mt-5" action="/home" method="post">
+            <div>
+                <label for="title">Title</label>
+                <input name="title" class="form-control" type="text" id="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="body">Body</label>
+                <textarea class="form-control form-control-lg" name="body" id="" required></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
 {% endblock %}

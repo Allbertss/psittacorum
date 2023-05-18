@@ -7,7 +7,7 @@ return new class
 {
     public function up(Schema $schema): void
     {
-        $table = $schema->createTable('posts');
+        $table = $schema->createTable('home');
 
         $table->addColumn('id', Types::INTEGER, [
             'unsigned' => true,
@@ -26,8 +26,8 @@ return new class
 
     public function down(Schema $schema): void
     {
-        if ($schema->hasTable('posts')) {
-            $schema->dropTable('posts');
+        if ($schema->hasTable('home')) {
+            $schema->dropTable('home');
         }
     }
 };

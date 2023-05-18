@@ -4,6 +4,7 @@ namespace App\controller;
 
 use allbertss\psittacorum\controller\AbstractController;
 use allbertss\psittacorum\http\Response;
+use App\entity\Home;
 use App\Widget;
 
 class HomeController extends AbstractController
@@ -37,5 +38,15 @@ class HomeController extends AbstractController
     public function create(): Response
     {
         return $this->render('form.html.twig');
+    }
+
+    public function store(): void
+    {
+        $title = $this->request->postParameters['title'];
+        $body = $this->request->postParameters['body'];
+
+        $post = Home::create($title, $body);
+
+        dd($post);
     }
 }

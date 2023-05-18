@@ -8,5 +8,6 @@ return [
     ['GET', '/hello/{name:.+}', function (string $name) {
         return new \allbertss\psittacorum\Http\Response("Hello $name");
     }],
-    ['GET', '/posts', [HomeController::class, 'create']],
+    ['GET', '/home', [HomeController::class, 'create']],
+    ['POST', '/home', [HomeController::class, 'store']],
 ];

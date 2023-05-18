@@ -2,6 +2,7 @@
 
 namespace allbertss\psittacorum\routing;
 
+use allbertss\psittacorum\controller\AbstractController;
 use allbertss\psittacorum\http\exception\HttpException;
 use allbertss\psittacorum\http\exception\HttpRequestMethodException;
 use allbertss\psittacorum\http\Request;
@@ -28,6 +29,10 @@ class Router implements RouterInterface
             [$controllerId, $method] = $handler;
 
             $controller = $container->get($controllerId);
+
+            if (is_subclass_of($controller, AbstractController::class)) {
+                $controller->setRequest($request);
+            }
 
             $handler = [$controller, $method];
         }
