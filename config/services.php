@@ -43,7 +43,7 @@ $container->extend(
 $container->add(
     \allbertss\psittacorum\http\middleware\RequestHandlerInterface::class,
     \allbertss\psittacorum\http\middleware\RequestHandler::class
-);
+)->addArgument($container);
 
 $container->add(\allbertss\psittacorum\http\Kernel::class)->addArguments([
     \allbertss\psittacorum\routing\RouterInterface::class,

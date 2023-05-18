@@ -4,12 +4,19 @@ namespace allbertss\psittacorum\http\middleware;
 
 use allbertss\psittacorum\http\Request;
 use allbertss\psittacorum\http\Response;
+use Psr\Container\ContainerInterface;
 
 class RequestHandler implements RequestHandlerInterface
 {
     private array $middleware = [
         Authenticate::class,
     ];
+
+    public function __construct(
+        private ContainerInterface $container
+    )
+    {
+    }
 
     public function handle(Request $request): Response
     {
@@ -19,6 +26,8 @@ class RequestHandler implements RequestHandlerInterface
 
         $middlewareClass = array_shift($this->middleware);
 
-        return (new $middlewareClass)->process($request, $this);
+        $middleware = $this->container->get($middlewareClass);
+
+        return $middleware->process($request, $this);
     }
 }
