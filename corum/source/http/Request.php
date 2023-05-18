@@ -2,6 +2,7 @@
 
 namespace allbertss\psittacorum\http;
 
+// TODO: use psr-15 Request interface
 readonly class Request
 {
     public function __construct(
