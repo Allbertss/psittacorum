@@ -11,7 +11,7 @@ use App\repository\HomeRepository;
 class HomeController extends AbstractController
 {
     public function __construct(
-        private HomeMapper $homeMapper,
+        private HomeMapper     $homeMapper,
         private HomeRepository $homeRepository
     )
     {
@@ -27,16 +27,22 @@ class HomeController extends AbstractController
         );
     }
 
+    public function showAll(): Response
+    {
+        $homes = $this->homeRepository->findAll();
+
+        return $this->render('homes.html.twig', [
+            'homes' => $homes
+        ]);
+    }
+
     public function show(int $id): Response
     {
         $home = $this->homeRepository->findById($id);
 
-        return $this->render(
-            'home.html.twig',
-            [
-                'home' => $home
-            ]
-        );
+        return $this->render('home.html.twig', [
+            'home' => $home
+        ]);
     }
 
     public function create(): Response
