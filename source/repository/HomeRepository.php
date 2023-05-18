@@ -2,6 +2,7 @@
 
 namespace App\repository;
 
+use allbertss\psittacorum\http\exception\NotFoundException;
 use App\entity\Home;
 use Doctrine\DBAL\Connection;
 
@@ -13,7 +14,29 @@ class HomeRepository
     {
     }
 
-    public function findById(int $id): Home|null
+    public function findOrFail(int $id): Home
+    {
+        $home = $this->findById($id);
+
+        if (!$home) {
+            throw new NotFoundException("Home with id $id not found.");
+        }
+
+        return $home;
+    }
+
+    public function findAllOrFail(): array
+    {
+        $homes = $this->findAll();
+
+        if (!$homes) {
+            throw new NotFoundException("Home not found.");
+        }
+
+        return $homes;
+    }
+
+    protected function findById(int $id): Home|null
     {
         $queryBuilder = $this->connection->createQueryBuilder();
 
@@ -40,7 +63,7 @@ class HomeRepository
     }
 
     // TODO: check if it is better to return nulls or empty object
-    public function findAll(): array|null
+    protected function findAll(): array|null
     {
         $queryBuilder = $this->connection->createQueryBuilder();
 

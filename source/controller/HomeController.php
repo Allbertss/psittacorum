@@ -29,7 +29,7 @@ class HomeController extends AbstractController
 
     public function showAll(): Response
     {
-        $homes = $this->homeRepository->findAll();
+        $homes = $this->homeRepository->findAllOrFail();
 
         return $this->render('homes.html.twig', [
             'homes' => $homes
@@ -38,7 +38,7 @@ class HomeController extends AbstractController
 
     public function show(int $id): Response
     {
-        $home = $this->homeRepository->findById($id);
+        $home = $this->homeRepository->findOrFail($id);
 
         return $this->render('home.html.twig', [
             'home' => $home
