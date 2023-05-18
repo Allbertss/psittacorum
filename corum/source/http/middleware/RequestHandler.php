@@ -7,7 +7,9 @@ use allbertss\psittacorum\http\Response;
 
 class RequestHandler implements RequestHandlerInterface
 {
-    private array $middleware = [];
+    private array $middleware = [
+        Authenticate::class,
+    ];
 
     public function handle(Request $request): Response
     {
