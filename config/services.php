@@ -104,7 +104,7 @@ $container->add('database:migrations:rollback', \allbertss\psittacorum\console\c
 $container->add(\allbertss\psittacorum\http\middleware\RouterDispatch::class)
     ->addArguments([
         \allbertss\psittacorum\routing\RouterInterface::class,
-        \Psr\Container\ContainerInterface::class
+        $container
     ]);
 
 return $container;

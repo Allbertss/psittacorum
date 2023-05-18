@@ -9,7 +9,7 @@ class Authenticate implements MiddlewareInterface
 {
     public function process(Request $request, RequestHandlerInterface $requestHandler): Response
     {
-        if (true) {
+        if (false) {
             return new Response("Authentication failed", 401);
         }
 
