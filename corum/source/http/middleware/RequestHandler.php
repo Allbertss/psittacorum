@@ -10,6 +10,7 @@ class RequestHandler implements RequestHandlerInterface
 {
     private array $middleware = [
         Authenticate::class,
+        RouterDispatch::class
     ];
 
     public function __construct(

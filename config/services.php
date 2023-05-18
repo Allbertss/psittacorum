@@ -101,4 +101,10 @@ $container->add('database:migrations:rollback', \allbertss\psittacorum\console\c
         new \League\Container\Argument\Literal\StringArgument(BASE_PATH . '/migrations')
     ]);
 
+$container->add(\allbertss\psittacorum\http\middleware\RouterDispatch::class)
+    ->addArguments([
+        \allbertss\psittacorum\routing\RouterInterface::class,
+        \Psr\Container\ContainerInterface::class
+    ]);
+
 return $container;

@@ -1,5 +1,7 @@
 <?php
 
+// TODO: add readonly
+
 declare(strict_types = 1);
 
 use allbertss\psittacorum\http\Request;
