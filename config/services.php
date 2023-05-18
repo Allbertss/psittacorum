@@ -78,4 +78,10 @@ $container->add('database:migrations:migrate', \allbertss\psittacorum\console\co
         new \League\Container\Argument\Literal\StringArgument(BASE_PATH . '/migrations')
     ]);
 
+$container->add('database:migrations:rollback', \allbertss\psittacorum\console\command\migrate\RollbackDatabase::class)
+    ->addArguments([
+        \Doctrine\DBAL\Connection::class,
+        new \League\Container\Argument\Literal\StringArgument(BASE_PATH . '/migrations')
+    ]);
+
 return $container;

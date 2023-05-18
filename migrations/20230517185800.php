@@ -26,8 +26,8 @@ return new class
 
     public function down(Schema $schema): void
     {
-        $schema->dropTable('posts');
-        // TODO: implement rollback database command
-        // doctrine:database:rollback
+        if ($schema->hasTable('posts')) {
+            $schema->dropTable('posts');
+        }
     }
 };
